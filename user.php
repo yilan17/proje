@@ -68,8 +68,8 @@ include "db.php";
 										<tr>
                       <th>#</th>
 											<th>Ad</th>
-											<th>Soyad</th>
-											<th>Birim</th>
+											<th>Şifre</th>
+											<th>Yetki</th>
 											<th>Actions</th>
 
 										</tr>
