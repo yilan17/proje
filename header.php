@@ -1,14 +1,30 @@
+<?php
+include "db.php";
+session_start();
+if($_SESSION["login"]==true){
+$id=$_SESSION["id"];
+$query = $db->query("SELECT * FROM user WHERE id = '{$id}'")->fetch(PDO::FETCH_ASSOC);
+ if ($query){
+
+
+?>
+
+
 <!doctype html>
 <html class="fixed">
 	<head>
 
 		<!-- Basic -->
-		<meta charset="UTF-8">
 
-		<title>Basic Tables | Porto Adminnn - Responsive HTML5 Template 1.4.1</title>
-		<meta name="keywords" content="HTML5 Admin Template" />
-		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="UTF-8">
+		<title>Nevşehir Belediye</title>
+		<meta name="keywords" content="Nevşehir Belediye" />
+		<meta name="description" content="Nevşehir Belediye">
 		<meta name="author" content="okler.net">
+
+
 
 		<!-- Mobile Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -46,8 +62,8 @@
 			<!-- start: header -->
 			<header class="header">
 				<div class="logo-container">
-					<a href="../" class="logo">
-						<img src="assets/images/logo.jpg" height="35" alt="Porto Admin" />
+					<a href="anasayfa.php" class="logo">
+						<img src="assets/images/logo.jpg" height="35" alt="" />
 					</a>
 					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
 						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -65,8 +81,8 @@
 								<img src="assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-								<span class="name">John Doe Junior</span>
-								<span class="role">administrator</span>
+								<span class="name"><?php echo $query["ad"];?></span>
+								<span class="role"><?php echo $query["yetki"];?></span>
 							</div>
 
 							<i class="fa custom-caret"></i>
@@ -80,7 +96,7 @@
 								</li>
 
 								<li>
-									<a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Çıkış</a>
+									<a role="menuitem" tabindex="-1" href="cikis.php"><i class="fa fa-power-off"></i> Çıkış</a>
 								</li>
 							</ul>
 						</div>
@@ -108,50 +124,41 @@
 							<nav id="menu" class="nav-main" role="navigation">
 								<ul class="nav nav-main">
 									<li>
-										<a href="index.php">
+										<a href="anasayfa.php">
 											<i class="fa fa-home" aria-hidden="true"></i>
 											<span>Hizmet Binası</span>
 										</a>
 									</li>
-									<li class="nav-parent">
-										<a>
-											<i class="fa fa-home" aria-hidden="true"></i>
-											Katlar
-										</a>
-										<ul class="nav nav-children">
-											<li>
-												<a href="katbir.php">
-													1.Kat
-												</a>
-											</li>
-											<li>
-												<a href="katiki.php">
-													2.Kat
-												</a>
-											</li>
-											<li>
-												<a href="katuc.php">
-													3.Kat
-												</a>
-											</li>
-											<li>
-												<a href="katdort.php">
-													4.Kat
-												</a>
-											</li>
-											<li>
-												<a href="katbes.php">
-													5.Kat
-												</a>
-											</li>
-										</ul>
-									</li>
 									<li>
 										<a href="personel.php">
-											<i class="fa fa-home" aria-hidden="true"></i>
+											<i class="fa fa-group" aria-hidden="true"></i>
 											<span>Personeller</span>
 										</a>
 									</li>
+									<li>
+										<a href="user.php">
+											<i class="fa fa-street-view" aria-hidden="true"></i>
+											<span>Kullanıcılar</span>
+										</a>
+									</li>
+                  <li class="nav-parent">
+										<a>
+											<i class="fa fa-gears" aria-hidden="true"></i>
+											<span>Ayarlar</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="birim.php">
+													 Birim Ekle/Çıkar
+												</a>
+											</li>
+											<li>
+												<a href="b_isletimsistemi.php">
+													 Bilgisayar Ayarları
+												</a>
+											</li>
+                    </ul>
+                  </li>
 								</ul>
 							</nav>
 						</div>
@@ -160,3 +167,10 @@
 
 				</aside>
 				<!-- end: sidebar -->
+<?php
+}}
+else{
+	header("location:index.php");
+}
+
+?>

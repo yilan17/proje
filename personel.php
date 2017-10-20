@@ -41,35 +41,28 @@ include "header.php";
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="col-sm-3 control-label">Birim</label>
-                            <div class="col-sm-9">
-                              <select data-plugin-selectTwo class="form-control populate">
-                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                  <option value="AK">Alaska</option>
-                                  <option value="HI">Hawaii</option>
-                                </optgroup>
-                                <optgroup label="Pacific Time Zone">
-                                  <option value="CA">California</option>
-                                  <option value="NV">Nevada</option>
-                                  <option value="OR">Oregon</option>
-                                  <option value="WA">Washington</option>
-                                </optgroup>
+                            <label class="col-md-3 control-label">Birim </label>
+                            <div class="col-md-9">
+                              <select class="form-control" data-plugin-multiselect id="ms_example1">
+                                <option value="cheese" selected></option>
+                                <option value="tomatoes">1</option>
+                                <option value="tomatoes">2</option>
+                                <option value="tomatoes">3</option>
+                                <option value="tomatoes">4</option>
 
-                                <optgroup label="Central Time Zone">
-                                  <option value="AL">Alabama</option>
-                                  <option value="AR">Arkansas</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">Kat </label>
+                            <div class="col-md-9">
+                              <select class="form-control" data-plugin-multiselect id="ms_example1">
+                                <option value="cheese" selected></option>
+                                <option value="tomatoes">1</option>
+                                <option value="tomatoes">2</option>
+                                <option value="tomatoes">3</option>
+                                <option value="tomatoes">4</option>
 
-                                  <option value="TX">Texas</option>
-                                  <option value="TN">Tennessee</option>
-                                  <option value="WI">Wisconsin</option>
-                                </optgroup>
-                                <optgroup label="Eastern Time Zone">
-                                  <option value="CT">Connecticut</option>
-
-                                  <option value="VT">Vermont</option>
-                                  <option value="VA">Virginia</option>
-                                  <option value="WV">West Virginia</option>
-                                </optgroup>
                               </select>
                             </div>
                           </div>
@@ -96,6 +89,12 @@ include "header.php";
     													</select>
     												</div>
     											</div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">İşlemci</label>
+                            <div class="col-sm-9">
+                              <input type="email" name="email" class="form-control" required/>
+                            </div>
+                          </div>
                           <div class="form-group mt-lg">
                             <label class="col-sm-3 control-label">Ram Kartı</label>
                             <div class="col-sm-9">
@@ -146,43 +145,45 @@ include "header.php";
 								<table class="table table-bordered table-striped mb-none" id="datatable-default">
 									<thead>
 										<tr>
-											<th>Rendering engine</th>
-											<th>Browser</th>
-											<th>Platform(s)</th>
-											<th class="hidden-phone">Engine version</th>
-											<th class="hidden-phone">CSS grade</th>
+                      <th>#</th>
+											<th>Ad</th>
+											<th>Soyad</th>
+											<th>Birim</th>
+											<th>Actions</th>
+
 										</tr>
 									</thead>
 									<tbody>
-										<tr class="gradeX">
-											<td>Trident</td>
-											<td>Internet
-												Explorer 4.0
-											</td>
-											<td>Win 95+</td>
-											<td class="center hidden-phone">4</td>
-											<td class="center hidden-phone">X</td>
-										</tr>
-										<tr class="gradeC">
-											<td>Trident</td>
-											<td>Internet
-												Explorer 5.0
-											</td>
-											<td>Win 95+</td>
-											<td class="center hidden-phone">5</td>
-											<td class="center hidden-phone">C</td>
-										</tr>
-
 										<tr class="gradeA">
 											<td>Gecko</td>
 											<td>Firefox 1.0</td>
 											<td>Win 98+ / OSX.2+</td>
 											<td class="center hidden-phone">1.7</td>
-											<td class="center hidden-phone">A</td>
+                      <td class="actions-hover actions-fade" align="center">
+										  	<a href=""><i class="fa fa-pencil"></i></a>
+											  <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
+											</td>
 										</tr>
-
-
-
+                    <tr class="gradeA">
+											<td>Gecko</td>
+											<td>Firefox 1.0</td>
+											<td>Win 98+ / OSX.2+</td>
+											<td class="center hidden-phone">1.7</td>
+                      <td class="actions-hover actions-fade" align="center">
+                        <a href=""><i class="fa fa-pencil"></i></a>
+                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                      </td>
+										</tr>
+                    <tr class="gradeA">
+											<td>dssdsdss</td>
+											<td>Firefox 1.0</td>
+											<td>Win 98+ / OSX.2+</td>
+											<td class="center hidden-phone">1.7</td>
+                      <td class="actions-hover actions-fade" align="center">
+                        <a href=""><i class="fa fa-pencil"></i></a>
+                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                      </td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
