@@ -1,5 +1,6 @@
 <?php
 include "header.php";
+$id=$_GET["id"];
  ?>
  <section role="main" class="content-body">
    <header class="page-header">
@@ -11,7 +12,7 @@ include "header.php";
        <div class="col-md-12">
          <section class="panel">
            <header class="panel-heading">
-             <h2 class="panel-title">5.KAT</h2>
+             <h2 class="panel-title"><?php echo $id;?></h2>
            </header>
            <div align="center" class="panel-body">
 

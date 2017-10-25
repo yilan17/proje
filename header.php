@@ -157,6 +157,11 @@ $query = $db->query("SELECT * FROM user WHERE id = '{$id}'")->fetch(PDO::FETCH_A
 													 Bilgisayar Ayarları
 												</a>
 											</li>
+                      <li>
+												<a href="h_bina.php">
+													 Hizmet Bina Katları
+												</a>
+											</li>
                     </ul>
                   </li>
 								</ul>

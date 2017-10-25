@@ -1,5 +1,6 @@
 <?php
 include "header.php";
+include 'db.php';
  ?>
  <section role="main" class="content-body">
    <header class="page-header">
@@ -44,12 +45,15 @@ include "header.php";
                             <label class="col-md-3 control-label">Birim </label>
                             <div class="col-md-9">
                               <select class="form-control" data-plugin-multiselect id="ms_example1">
-                                <option value="cheese" selected></option>
-                                <option value="tomatoes">1</option>
-                                <option value="tomatoes">2</option>
-                                <option value="tomatoes">3</option>
-                                <option value="tomatoes">4</option>
-
+                                <option value="" ></option>
+                                <?php
+                                $birimler = $db->query("SELECT * FROM birim", PDO::FETCH_ASSOC);
+                                if ( $birimler->rowCount() ){
+                                     foreach( $birimler as $birim ){
+                                ?>
+                                <option value="<?php echo $birim["id"];?>"><?php echo $birim["ad"];?></option>
+                                <?php }
+                                  }?>
                               </select>
                             </div>
                           </div>
@@ -62,7 +66,7 @@ include "header.php";
                                 <option value="tomatoes">2</option>
                                 <option value="tomatoes">3</option>
                                 <option value="tomatoes">4</option>
-
+                                <option value="tomatoes">5</option>
                               </select>
                             </div>
                           </div>
@@ -70,7 +74,8 @@ include "header.php";
     												<label class="col-md-3 control-label">Bilgisayar Tipi</label>
     												<div class="col-md-9">
     													<select class="form-control" data-plugin-multiselect id="ms_example1">
-    														<option value="cheese" selected></option>
+    														<option value=""></option>
+
     														<option value="tomatoes">Masaüstü</option>
                                 <option value="tomatoes">Dizüstü</option>
 
@@ -81,11 +86,16 @@ include "header.php";
     												<label class="col-md-3 control-label">İşletim Sistemi</label>
     												<div class="col-md-9">
     													<select class="form-control" data-plugin-multiselect id="ms_example1">
-    														<option value="cheese" selected></option>
-    														<option value="tomatoes">Windows Xp</option>
-                                <option value="tomatoes">Windows 7</option>
-                                <option value="tomatoes">Windows 8</option>
-                                <option value="tomatoes">Windows 10</option>
+                                <option value=""></option>
+                                <?php
+                                $isletimsistemi=$db->query("SELECT * FROM isletimsistemi",PDO::FETCH_ASSOC);
+                                if($isletimsistemi->rowCount()){
+                                    foreach ($isletimsistemi as $isletim) {
+
+                                ?>
+                                <option value="<?php echo $isletim["id"];?>"><?php echo $isletim["ad"];?></option>
+                                <?php }
+                                }?>
     													</select>
     												</div>
     											</div>

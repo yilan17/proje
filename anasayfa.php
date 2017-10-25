@@ -17,18 +17,17 @@ include "header.php";
 										<div class="col-md-12">
 											<img src="assets/images/cati.png" data-toggle="tooltip" data-placement="left" title="ÇATI" />
 										</div>
+                    <?php
+
+                       $kat = $db->query("SELECT * FROM hizmetbinasi ORDER BY katid DESC", PDO::FETCH_ASSOC);
+                       if ( $kat->rowCount() ){
+                       foreach( $kat as $katlar ){
+
+                    ?>
 										<div class="col-md-12">
-											<a href="katbes.php"><img src="assets/images/katbes.png" data-toggle="tooltip" data-placement="left" title="5.Kat"/></a>
+											<a href="kat.php?id=<?php echo $katlar["katid"]; ?>"><img src="assets/images/<?php echo $katlar["resim"]; ?>" data-toggle="tooltip" data-placement="left" title="<?php echo $katlar["katid"]; ?>.Kat"/></a>
 										</div>
-										<div class="col-md-12">
-											<a href="katdort.php"><img src="assets/images/katdort.png" data-toggle="tooltip" data-placement="left" title="4.Kat"/></a>
-										</div>
-										<div class="col-md-12">
-											<a href="katuc.php"><img src="assets/images/katuc.png" data-toggle="tooltip" data-placement="left" title="3.Kat"/></a>
-										</div>
-										<div class="col-md-12">
-											<a href="katiki.php"><img src="assets/images/katiki.png" data-toggle="tooltip" data-placement="left" title="2.Kat"/></a>
-										</div>
+                  <?php }}?>
 										<div class="col-md-12">
 											<a href="katbir.php"><img src="assets/images/katbir.png" data-toggle="tooltip" data-placement="left" title="1.Kat" /></a>
 										</div>
