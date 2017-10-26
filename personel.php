@@ -28,23 +28,23 @@ include 'db.php';
                         <h2 class="panel-title">Personel Ekle</h2>
                       </header>
                       <div class="panel-body">
-                        <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+                        <form name="personel" method="post" action="personel_sonuc.php" id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
                           <div class="form-group mt-lg">
                             <label class="col-sm-3 control-label">Ad</label>
                             <div class="col-sm-9">
-                              <input type="text" name="name" class="form-control" placeholder="Adınızı Yazınız..." required/>
+                              <input type="text" name="ad" class="form-control" placeholder="Adınızı Yazınız..." required="required" />
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-sm-3 control-label">Soyad</label>
                             <div class="col-sm-9">
-                              <input type="email" name="email" class="form-control" placeholder="Soyadınızı yazınız..." required/>
+                              <input type="text" name="soyad" class="form-control" placeholder="Soyadınızı yazınız..." required="required" />
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-md-3 control-label">Birim </label>
                             <div class="col-md-9">
-                              <select class="form-control" data-plugin-multiselect id="ms_example1">
+                              <select name="birim" class="form-control" data-plugin-multiselect id="ms_example1">
                                 <option value="" ></option>
                                 <?php
                                 $birimler = $db->query("SELECT * FROM birim", PDO::FETCH_ASSOC);
@@ -60,24 +60,27 @@ include 'db.php';
                           <div class="form-group">
                             <label class="col-md-3 control-label">Kat </label>
                             <div class="col-md-9">
-                              <select class="form-control" data-plugin-multiselect id="ms_example1">
-                                <option value="cheese" selected></option>
-                                <option value="tomatoes">1</option>
-                                <option value="tomatoes">2</option>
-                                <option value="tomatoes">3</option>
-                                <option value="tomatoes">4</option>
-                                <option value="tomatoes">5</option>
+                              <select name="kat" class="form-control" data-plugin-multiselect id="ms_example1">
+                                <option value="" ></option>
+                                <?php
+                                $kat = $db->query("SELECT * FROM hizmetbinasi", PDO::FETCH_ASSOC);
+                                if ( $kat->rowCount() ){
+                                     foreach( $kat as $katlar ){
+                                ?>
+                                <option value="<?php echo $katlar["katid"];?>"><?php echo $katlar["katid"];?></option>
+                                <?php }
+                                  }?>
                               </select>
                             </div>
                           </div>
                           <div class="form-group">
     												<label class="col-md-3 control-label">Bilgisayar Tipi</label>
     												<div class="col-md-9">
-    													<select class="form-control" data-plugin-multiselect id="ms_example1">
+    													<select name="bilgisayartipi" class="form-control" data-plugin-multiselect id="ms_example1">
     														<option value=""></option>
 
-    														<option value="tomatoes">Masaüstü</option>
-                                <option value="tomatoes">Dizüstü</option>
+    														<option value="Masaüstü">Masaüstü</option>
+                                <option value="Dizüstü">Dizüstü</option>
 
     													</select>
     												</div>
@@ -85,13 +88,12 @@ include 'db.php';
                           <div class="form-group">
     												<label class="col-md-3 control-label">İşletim Sistemi</label>
     												<div class="col-md-9">
-    													<select class="form-control" data-plugin-multiselect id="ms_example1">
+    													<select name="isletimsistemi" class="form-control" data-plugin-multiselect id="ms_example1">
                                 <option value=""></option>
                                 <?php
                                 $isletimsistemi=$db->query("SELECT * FROM isletimsistemi",PDO::FETCH_ASSOC);
                                 if($isletimsistemi->rowCount()){
                                     foreach ($isletimsistemi as $isletim) {
-
                                 ?>
                                 <option value="<?php echo $isletim["id"];?>"><?php echo $isletim["ad"];?></option>
                                 <?php }
@@ -100,16 +102,38 @@ include 'db.php';
     												</div>
     											</div>
                           <div class="form-group">
+													<label class="col-md-3 control-label">Mac Adresi</label>
+													<div class="col-md-9">
+														<div class="input-group">
+															<span class="input-group-addon">
+																<i class="fa fa-calendar"></i>
+															</span>
+                              <input type="text" name="macadresi" class="form-control" placeholder="__:__:__:__:__:__" required/>
+                            </div>
+													</div>
+												</div>
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">İp Adresi</label>
+                        <div class="col-md-9">
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="text" name="ipadresi" class="form-control" placeholder="__.__.__.__" required/>
+                          </div>
+                        </div>
+                      </div>
+                          <div class="form-group">
                             <label class="col-sm-3 control-label">İşlemci</label>
                             <div class="col-sm-9">
-                              <input type="email" name="email" class="form-control" required/>
+                              <input type="text" name="islemci" class="form-control" required/>
                             </div>
                           </div>
                           <div class="form-group mt-lg">
                             <label class="col-sm-3 control-label">Ram Kartı</label>
                             <div class="col-sm-9">
                                 <div class="input-group mb-md">
-                                   <input type="text" name="name" class="form-control" required/>
+                                   <input type="text" name="ram" class="form-control" required/>
                                    <span class="input-group-addon ">GB</span>
                                </div>
                             </div>
@@ -117,29 +141,57 @@ include 'db.php';
                           <div class="form-group">
                             <label class="col-sm-3 control-label">Ekran Kartı Modeli</label>
                             <div class="col-sm-9">
-                              <input type="email" name="email" class="form-control" required/>
+                              <input type="text" name="ekrankartimodeli" class="form-control" required/>
                             </div>
                           </div>
                           <div class="form-group mt-lg">
                             <label class="col-sm-3 control-label">Ekran Kartı</label>
                             <div class="col-sm-9">
                                 <div class="input-group mb-md">
-                                   <input type="text" name="name" class="form-control" required/>
+                                   <input type="text" name="ekrankarti" class="form-control" required/>
                                    <span class="input-group-addon ">GB</span>
                                </div>
                             </div>
                           </div>
                           <div class="form-group mt-lg">
-                            <label class="col-sm-3 control-label">Hard Disk</label>
-                            <div class="col-sm-9">
-                                <div class="input-group mb-md">
-														       <input type="text" name="name" class="form-control" required/>
-														       <span class="input-group-addon ">GB</span>
-													     </div>
-                            </div>
-                          </div>
-
-                        </form>
+                            <label class="col-sm-3 control-label">Diskler</label>
+                            <div class="col-sm-6">
+                                  <div class="input-group mb-md">
+                                  <div class="radio-custom radio-primary">
+  																<input type="radio" id="radioExample2" name="group1" checked="checked">
+  																<label for="radioExample2">HARD Disk</label>
+  															  </div>
+                                  <div class="radio-custom radio-primary">
+  																<input type="radio" id="radioExample2" name="group1">
+  																<label for="radioExample2">SSD Disk</label>
+                                  </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label"></label>
+                                <div class="col-sm-9">
+                                    <div class="input-group mb-md">
+                                      <input type="text" name="harddisk" class="form-control" placeholder="Hard disk"/>
+                                      <input type="text" name="ssddisk" class="form-control" placeholder="Ssd disk" disabled />
+                                      <span class="input-group-addon ">GB</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                              <script>(function () {
+                               var form = document.forms['personel'];
+                               form.group1[0].onfocus = function () {
+                                   form.harddisk.disabled =  false;
+                                   form.ssddisk.disabled = true;
+                                   form.ssddisk.value="";
+                               }
+                               form.group1[1].onfocus = function () {
+                                   form.ssddisk.disabled = false;
+                                   form.harddisk.disabled = false;
+                                   form.ssddisk.value="";
+                               }
+                                 })();
+                           </script>
                       </div>
                       <footer class="panel-footer">
                         <div class="row">
@@ -149,6 +201,7 @@ include 'db.php';
                           </div>
                         </div>
                       </footer>
+                      </form>
                     </section>
                   </div>
 								</div>
